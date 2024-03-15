@@ -26,7 +26,7 @@ namespace BookStoreWebApp.Controllers
         {
             try
             {
-                //BookStoreBasicFunctions.AddGenre(genreToAdd);
+                BookStoreAdminFunctions.AddGenre(genreToAdd);
                 return RedirectToAction("Genres", "Home");
             }
             catch
@@ -38,8 +38,8 @@ namespace BookStoreWebApp.Controllers
         // GET: GenreController/Edit/5
         public ActionResult Edit(int id)
         {
-            //var genre = BookStoreBasicFunctions.GetGenreById(id);
-            return View();
+            var genre = BookStoreBasicFunctions.GetGenreById(id);
+            return View(genre);
         }
 
         // POST: GenreController/Edit/5
@@ -49,8 +49,8 @@ namespace BookStoreWebApp.Controllers
         {
             try
             {
-                //BookStoreBasicFunctions.EditGenre(genreToEdit);
-                return RedirectToAction(nameof(Index));
+                BookStoreAdminFunctions.EditGenre(genreToEdit);
+                return RedirectToAction("Genres","Home");
             }
             catch
             {
@@ -62,7 +62,7 @@ namespace BookStoreWebApp.Controllers
         public ActionResult Delete(int id)
         {
             var genre = BookStoreBasicFunctions.GetGenreById(id);
-            return View();
+            return View(genre);
         }
 
         // POST: GenreController/Delete/5
@@ -73,7 +73,7 @@ namespace BookStoreWebApp.Controllers
             try
             {
                 BookStoreAdminFunctions.DeleteGenre(genreToDelete.GenreId);
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Genres", "Home");
             }
             catch
             {
