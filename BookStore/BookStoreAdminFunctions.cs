@@ -104,5 +104,52 @@ namespace BookStore
         }
 
 
+
+        public static void AddAuthor(Author author)
+        {
+            try
+            {
+                using (var db = new SE407_BookStoreContext())
+                {
+                    db.Authors.Add(author);
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception e)
+            {
+            }
+        }
+
+        public static void DeleteAuthor(int id)
+        {
+            try
+            {
+                using (var db = new SE407_BookStoreContext())
+                {
+                    var authorToDelete = db.Authors.Find(id);
+                    db.Authors.Remove(authorToDelete);
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception e)
+            {
+            }
+        }
+
+        public static void EditAuthor(Author author)
+        {
+            try
+            {
+                using (var db = new SE407_BookStoreContext())
+                {
+                    db.Authors.Update(author);
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception e)
+            {
+            }
+        }
+
     }
 }

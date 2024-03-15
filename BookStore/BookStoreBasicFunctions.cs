@@ -98,6 +98,17 @@ namespace BookStore
             }
         }
 
+        public static Author GetAuthorById(int id)
+        {
+            using (var db = new SE407_BookStoreContext())
+            {
+                var author = db.Authors
+                    .Where(author => author.AuthorId == id)
+                    .FirstOrDefault();
+
+                return author;
+            }
+        }
 
     }
 }

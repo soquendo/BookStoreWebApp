@@ -9,29 +9,29 @@ using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.View;
 
 namespace BookStoreWebApp.Controllers
 {
-    public class GenreController : Controller
+    public class AuthorController : Controller
     {
-        // GET: GenreController
+        // GET: AuthorController
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: GenreController/Create
+        // GET: AuthorController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: GenreController/Create
+        // POST: AuthorController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Genre genreToAdd)
+        public ActionResult Create(Author authorToAdd)
         {
             try
             {
-                BookStoreAdminFunctions.AddGenre(genreToAdd);
-                return RedirectToAction("Genres", "Home");
+                BookStoreAdminFunctions.AddAuthor(authorToAdd);
+                return RedirectToAction("Authors", "Home");
             }
             catch
             {
@@ -39,22 +39,22 @@ namespace BookStoreWebApp.Controllers
             }
         }
 
-        // GET: GenreController/Edit/5
+        // GET: AuthorController/Edit/5
         public ActionResult Edit(int id)
         {
-            var genre = BookStoreBasicFunctions.GetGenreById(id);
-            return View(genre);
+            var author = BookStoreBasicFunctions.GetAuthorById(id);
+            return View();
         }
 
-        // POST: GenreController/Edit/5
+        // POST: AuthorController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Genre genreToEdit)
+        public ActionResult Edit(Author authorToEdit)
         {
             try
             {
-                BookStoreAdminFunctions.EditGenre(genreToEdit);
-                return RedirectToAction("Genres","Home");
+                BookStoreAdminFunctions.EditAuthor(authorToEdit);
+                return RedirectToAction("Authors", "Home");
             }
             catch
             {
@@ -62,22 +62,22 @@ namespace BookStoreWebApp.Controllers
             }
         }
 
-        // GET: GenreController/Delete/5
+        // GET: AuthorController/Delete/5
         public ActionResult Delete(int id)
         {
-            var genre = BookStoreBasicFunctions.GetGenreById(id);
-            return View(genre);
+            var author = BookStoreBasicFunctions.GetAuthorById(id);
+            return View(author);
         }
 
-        // POST: GenreController/Delete/5
+        // POST: AuthorController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(Genre genreToDelete)
+        public ActionResult Delete(Author author)
         {
             try
             {
-                BookStoreAdminFunctions.DeleteGenre(genreToDelete.GenreId);
-                return RedirectToAction("Genres", "Home");
+                BookStoreAdminFunctions.DeleteAuthor(author.AuthorId);
+                return RedirectToAction("Authors", "Home");
             }
             catch
             {
